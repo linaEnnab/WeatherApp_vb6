@@ -60,14 +60,14 @@ Begin VB.Form Form1
       Left            =   2280
       TabIndex        =   2
       Top             =   1680
-      Width           =   1815
+      Width           =   855
    End
    Begin VB.Label result 
       Height          =   495
-      Left            =   4560
+      Left            =   3480
       TabIndex        =   1
       Top             =   1680
-      Width           =   3375
+      Width           =   3255
    End
 End
 Attribute VB_Name = "Form1"
@@ -109,6 +109,21 @@ Private Sub cmdChangeInterval_Click()
 
 timerInterval = Val(Me.Interval.Text)
 
+End Sub
+
+Private Sub Interval_KeyUp(KeyCode As Integer, Shift As Integer)
+If Not IsNumeric(Interval.Text) Then
+Me.Interval.Text = timerInterval
+End If
+
+End Sub
+
+
+
+
+
+Private Sub Interval_Validate(Cancel As Boolean)
+Cancel = Not IsNumeric(Me.Interval.Text)
 End Sub
 
 Private Sub UpdateTimer_Timer()
